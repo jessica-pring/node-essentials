@@ -8,7 +8,9 @@ app.use(bodyParser.json());
 let products = [];
 
 app.post('/products', function (req, res) {
-  // implement
+  const newProduct = { ...req.body, id: products.length + 1 };
+  products = [...products, newProduct];
+  res.json(newProduct);
 });
 
 app.put('/products', function (req, res) {
