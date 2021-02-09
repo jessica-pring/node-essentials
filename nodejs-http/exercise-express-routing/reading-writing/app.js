@@ -30,7 +30,9 @@ app.put('/products', function (req, res) {
 });
 
 app.delete('/products/:id', function (req, res) {
-  // implement
+  const deletedProduct = products.find(p => p.id === +req.params.id);
+  products = products.filter(p => p.id !== +req.params.id);
+  res.json(deletedProduct);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
